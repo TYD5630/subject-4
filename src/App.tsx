@@ -79,7 +79,8 @@ function App() {
     const loadQuestions = async () => {
       try {
         setLoading(true)
-        const response = await fetch('/questions.json')
+        const base = import.meta.env.BASE_URL || '/'
+        const response = await fetch(`${base}questions.json`)
         if (!response.ok) throw new Error('题库加载失败，请检查网络或刷新页面')
         const data = await response.json()
         setAllQuestions(data)
